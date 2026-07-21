@@ -4,7 +4,9 @@ Use these drafts as starting points. Keep the link, adapt the first sentence to 
 
 Showcase: https://rubenglez.github.io/mobile-design-showcase/
 
-Skill: https://github.com/RubenGlez/mobile-design
+Install: https://www.skills.sh/rubenglez/mobile-design
+
+Repository: https://github.com/RubenGlez/mobile-design
 
 ## GitHub release or repository post
 
