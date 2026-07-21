@@ -11,6 +11,10 @@ Interactive fictional product cases that demonstrate what [`mobile-design`](http
 
 The showcase is deliberately separate from the installed skill so executable demos, videos, and visual assets do not add weight to users' skill installations.
 
+## Distribution material
+
+Use the ready-to-adapt copy in [`distribution/launch-kit.md`](distribution/launch-kit.md) when sharing the showcase. Feedback and ideas for future cases belong in [GitHub Issues](https://github.com/RubenGlez/mobile-design-showcase/issues/new/choose).
+
 ## Local preview
 
 ```bash

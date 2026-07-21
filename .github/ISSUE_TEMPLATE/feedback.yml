@@ -1,0 +1,28 @@
+name: Showcase feedback or case idea
+description: Suggest a new mobile product case or improve an existing one.
+title: "showcase: "
+labels: [showcase-feedback]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Feedback type
+      options:
+        - Existing case feedback
+        - New case idea
+        - Broken interaction or accessibility issue
+        - Distribution or documentation idea
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Describe the mobile task, audience, platform, and any relevant constraint.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Expected outcome
+      description: Explain what a strong example or improvement would demonstrate.
