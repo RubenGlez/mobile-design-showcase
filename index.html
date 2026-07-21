@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Interactive product-design cases created with the mobile-design agent skill."
+    />
+    <title>mobile-design showcase</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#cases">Skip to cases</a>
+    <header class="site-header">
+      <a class="wordmark" href="#top" aria-label="mobile-design showcase home">
+        <span class="wordmark-mark">m</span>
+        <span>mobile-design</span>
+        <span class="wordmark-muted">showcase</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#cases">Cases</a>
+        <a href="#method">Method</a>
+        <a href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Skill ↗</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Agent skill · Mobile product design</p>
+          <h1>Mobile UI that holds up outside the happy path.</h1>
+          <p class="hero-lede">
+            Four fictional products, designed as production-minded mobile flows. Each one makes
+            states, platform constraints, accessibility, and recovery visible.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#cases">Explore the cases</a>
+            <a class="button button-secondary" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Install the skill ↗</a>
+          </div>
+        </div>
+        <aside class="hero-proof" aria-label="What the cases demonstrate">
+          <p class="proof-label">Every case includes</p>
+          <ul>
+            <li><span>01</span> Design rationale</li>
+            <li><span>02</span> Interactive state changes</li>
+            <li><span>03</span> A prompt you can reuse</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="case-index" aria-label="Case index">
+        <a href="#fintech"><span>01</span> Trust after a transfer</a>
+        <a href="#cycling"><span>02</span> Safety without signal</a>
+        <a href="#checkout"><span>03</span> Checkout beyond English</a>
+        <a href="#audit"><span>04</span> Design audit in action</a>
+      </section>
+
+      <section id="cases" class="cases" aria-label="Interactive case studies">
+        <article id="fintech" class="case case-fintech">
+          <div class="case-copy">
+            <p class="eyebrow">01 · Fintech</p>
+            <h2>A transfer confirmation that earns confidence.</h2>
+            <p>
+              Solace makes the irreversible decision explicit, keeps the amount and recipient in
+              view, and avoids treating a pending payment as a success.
+            </p>
+            <dl class="case-facts">
+              <div><dt>Design read</dt><dd>Calm, explicit, iOS + Android</dd></div>
+              <div><dt>Dial choice</dt><dd>Low motion, low visual variance</dd></div>
+              <div><dt>State shown</dt><dd>Review → pending → sent</dd></div>
+            </dl>
+            <details class="prompt">
+              <summary>View the prompt</summary>
+              <code>Design a banking transfer confirmation for iOS and Android. Make the recipient, amount, risk, recovery, and platform divergence explicit.</code>
+            </details>
+          </div>
+          <div class="demo-stage finance-stage">
+            <div class="phone phone-finance" data-demo="finance">
+              <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+              <div class="app-topline"><button class="icon-button" aria-label="Go back">‹</button><span>Review transfer</span><button class="icon-button" aria-label="More options">•••</button></div>
+              <div class="finance-screen finance-review">
+                <p class="screen-kicker">You’re sending</p>
+                <p class="money">$420.00</p>
+                <div class="recipient"><span class="avatar avatar-maya">M</span><div><strong>Maya Thompson</strong><small>•••• 0198</small></div><span class="verified">✓</span></div>
+                <div class="summary-list"><div><span>Arrives</span><strong>Today</strong></div><div><span>Fee</span><strong>$0.00</strong></div><div><span>From</span><strong>Daily account</strong></div></div>
+                <p class="notice">Review the recipient and amount. Transfers may not be reversible once sent.</p>
+              </div>
+              <div class="finance-screen finance-pending" hidden>
+                <div class="pending-orbit" aria-hidden="true"></div><p class="screen-kicker">Sending securely</p><h3>Do not close the app</h3><p>We’re confirming your transfer to Maya.</p>
+              </div>
+              <div class="finance-screen finance-success" hidden>
+                <div class="success-mark">✓</div><p class="screen-kicker">Transfer sent</p><h3>$420.00 is on its way to Maya</h3><p>We’ll notify you if anything changes.</p><a href="#fintech" class="text-action">View receipt</a>
+              </div>
+              <div class="phone-bottom"><button class="primary-action" data-action="finance">Send $420.00</button><small data-label="finance">You’ll confirm with Face ID</small></div>
+            </div>
+          </div>
+        </article>
+
+        <article id="cycling" class="case case-cycling case-reverse">
+          <div class="case-copy">
+            <p class="eyebrow">02 · Outdoor safety</p>
+            <h2>A ride log that stays honest when the network disappears.</h2>
+            <p>
+              Trailguard designs for motion, location consent, battery awareness, and a route that
+              can remain safely on-device until a rider chooses to sync.
+            </p>
+            <dl class="case-facts">
+              <div><dt>Design read</dt><dd>Outdoor, high contrast, safety-critical</dd></div>
+              <div><dt>Risk preflight</dt><dd>Location, background execution, offline sync</dd></div>
+              <div><dt>Fallback</dt><dd>Manual ride mode with no invented route</dd></div>
+            </dl>
+            <details class="prompt">
+              <summary>View the prompt</summary>
+              <code>Design a cycling-safety feature for React Native/Expo that records rides with background location and an offline route log. Keep the app useful if location or connectivity is unavailable.</code>
+            </details>
+          </div>
+          <div class="demo-stage trail-stage">
+            <div class="phone phone-trail" data-demo="trail">
+              <div class="phone-status trail-status"><span>9:41</span><span>● 5G ▰</span></div>
+              <div class="trail-map" aria-label="Illustrated ride route map"><span class="map-label">Riverside loop</span><svg viewBox="0 0 280 290" aria-hidden="true"><path d="M38 231C70 184 49 124 93 96s63 39 110 8 55-81 33-98"/><path class="route-dot" d="M38 231C70 184 49 124 93 96s63 39 110 8 55-81 33-98"/></svg><span class="route-start">●</span><span class="route-end">◆</span></div>
+              <section class="ride-card">
+                <div class="ride-heading"><div><span class="recording-dot"></span> Recording</div><button class="small-control" data-action="trail-network">Go offline</button></div>
+                <div class="ride-metrics"><div><strong>12.4</strong><span>km</span></div><div><strong>00:38</strong><span>time</span></div><div><strong data-label="trail-gps">Strong</strong><span>GPS</span></div></div>
+                <p class="sync-state" data-label="trail-sync">Saved on this device · Syncing when online</p>
+                <div class="ride-actions"><button class="secondary-action">Pause</button><button class="primary-action">Finish ride</button></div>
+              </section>
+            </div>
+          </div>
+        </article>
+
+        <article id="checkout" class="case case-checkout">
+          <div class="case-copy">
+            <p class="eyebrow">03 · Commerce + localization</p>
+            <h2>Checkout that survives RTL, long copy, and a resized window.</h2>
+            <p>
+              Maison North makes language, direction, currency, and compact-to-wide layout part of
+              the product contract instead of a final translation pass.
+            </p>
+            <dl class="case-facts">
+              <div><dt>Design read</dt><dd>Editorial commerce, decisive, cross-platform</dd></div>
+              <div><dt>Modes</dt><dd>English / Arabic and compact / wide</dd></div>
+              <div><dt>State shown</dt><dd>Safe form completion with order summary</dd></div>
+            </dl>
+            <details class="prompt">
+              <summary>View the prompt</summary>
+              <code>Design a commerce checkout localized for Arabic and German. Cover RTL, long strings, currency formatting, form keyboard flow, and tablet layouts.</code>
+            </details>
+          </div>
+          <div class="demo-stage checkout-stage">
+            <div class="phone phone-checkout" data-demo="checkout">
+              <div class="checkout-controls"><button class="segment active" data-action="checkout-en">EN</button><button class="segment" data-action="checkout-ar">ع</button><button class="wide-toggle" data-action="checkout-wide">↔ Wide</button></div>
+              <div class="checkout-content">
+                <div class="checkout-title"><span class="shop-mark">M</span><div><small>Maison North</small><h3 data-label="checkout-title">Delivery details</h3></div><span class="step">2 of 3</span></div>
+                <div class="address-form"><label data-label="checkout-name">Full name<input value="Maya Thompson" aria-label="Full name" /></label><label data-label="checkout-address">Address<input value="17 Chapel Lane" aria-label="Address" /></label><div class="form-grid"><label data-label="checkout-city">City<input value="London" aria-label="City" /></label><label data-label="checkout-postcode">Postcode<input value="N1 8QZ" aria-label="Postcode" /></label></div></div>
+                <div class="order-summary"><div class="coat-thumb" aria-hidden="true"></div><div><strong data-label="checkout-product">Wool wrap coat</strong><small data-label="checkout-delivery">Standard delivery · 2–4 days</small></div><b data-label="checkout-price">$320.00</b></div>
+              </div>
+              <div class="phone-bottom checkout-bottom"><button class="primary-action" data-label="checkout-continue">Continue to payment</button><small data-label="checkout-total">Total $320.00</small></div>
+            </div>
+          </div>
+        </article>
+
+        <article id="audit" class="case case-audit case-reverse">
+          <div class="case-copy">
+            <p class="eyebrow">04 · Design audit</p>
+            <h2>Turn vague visual discomfort into an actionable fix list.</h2>
+            <p>
+              The audit starts with a weak support screen, names the issues by severity, then
+              rebuilds hierarchy, targets, state, and recovery without a decorative rewrite.
+            </p>
+            <dl class="case-facts">
+              <div><dt>Review method</dt><dd>Severity, rule ID, location, required fix</dd></div>
+              <div><dt>Problems found</dt><dd>Target size, hierarchy, swipe-only delete</dd></div>
+              <div><dt>Result</dt><dd>Keyboard-friendly, understandable in five seconds</dd></div>
+            </dl>
+            <details class="prompt">
+              <summary>View the prompt</summary>
+              <code>Review a mobile support queue with small icon actions, unclear priority, and swipe-only delete. Report issues with severity and required fixes.</code>
+            </details>
+          </div>
+          <div class="demo-stage audit-stage">
+            <div class="audit-tabs" role="tablist" aria-label="Audit state"><button class="segment active" role="tab" aria-selected="true" data-action="audit-before">Before</button><button class="segment" role="tab" aria-selected="false" data-action="audit-after">After</button></div>
+            <div class="phone phone-audit" data-demo="audit">
+              <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
+              <div class="audit-before-screen">
+                <div class="messy-header"><span>Inbox</span><button>⚙</button><button>⌕</button><button>⋮</button></div><p class="tiny-title">Support tickets</p>
+                <div class="messy-row"><span class="tiny-avatar"></span><div><b>Refund maybe?</b><small>Can someone help, it has been...</small></div><span>›</span></div><div class="messy-row"><span class="tiny-avatar orange"></span><div><b>What is this charge</b><small>Yesterday · #94821</small></div><span>›</span></div><div class="messy-row"><span class="tiny-avatar purple"></span><div><b>Urgent access</b><small>Please help please help please...</small></div><span>›</span></div>
+                <p class="swipe-hint">Swipe a row to delete</p>
+              </div>
+              <div class="audit-after-screen" hidden>
+                <div class="support-header"><div><small>SUPPORT QUEUE</small><h3>Needs attention</h3></div><button class="icon-button" aria-label="Search tickets">⌕</button></div>
+                <div class="filter-row"><button class="filter active">All <b>12</b></button><button class="filter">Urgent <b>3</b></button><button class="filter">Waiting <b>5</b></button></div>
+                <div class="ticket urgent"><span class="priority-dot"></span><div><strong>Account access blocked</strong><small>Amir Khan · 2 min ago</small></div><button class="row-action">Open</button></div><div class="ticket"><span class="priority-dot quiet"></span><div><strong>Unexpected card charge</strong><small>Lena Cruz · 18 min ago</small></div><button class="row-action">Open</button></div><div class="ticket"><span class="priority-dot quiet"></span><div><strong>Refund status</strong><small>Sam Ito · 42 min ago</small></div><button class="row-action">Open</button></div>
+                <button class="clear-button">Manage closed tickets</button>
+              </div>
+            </div>
+            <div class="audit-findings" data-label="audit-findings"><span>P1 · MD-001</span> Delete has no visible alternative<br /><span>P1 · MD-004</span> Icon targets are too small<br /><span>P2 · MD-008</span> Priority is not scannable</div>
+          </div>
+        </article>
+      </section>
+
+      <section id="method" class="method">
+        <div><p class="eyebrow">The method</p><h2>What changes when the design is treated as a product decision.</h2></div>
+        <ol>
+          <li><span>01</span><div><strong>Read the context</strong><p>Audience, environment, platform, constraints, task success.</p></div></li>
+          <li><span>02</span><div><strong>Design the states</strong><p>Not just the default screen, also loading, denied, offline, error, and recovery.</p></div></li>
+          <li><span>03</span><div><strong>Verify the contract</strong><p>Accessibility, window size, input methods, localization, and real runtime limits.</p></div></li>
+        </ol>
+      </section>
+
+      <section class="closing"><p class="eyebrow">Try it on a real app</p><h2>Give your coding agent a mobile brief with consequences.</h2><a class="button button-primary" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Get mobile-design ↗</a></section>
+    </main>
+    <footer><span>Fictional concepts, built to demonstrate the skill.</span><a href="https://github.com/RubenGlez/mobile-design-showcase" target="_blank" rel="noreferrer">Source ↗</a></footer>
+    <script src="app.js"></script>
+  </body>
+</html>
