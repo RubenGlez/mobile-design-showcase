@@ -3,217 +3,711 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
     <meta
       name="description"
-      content="Interactive product-design cases created with the mobile-design agent skill."
+      content="Six interactive, fictional product cases showing what the mobile-design agent skill does in each of its modes: Shape, Design, Critique, Refine, Harden, and Adapt."
     />
     <title>mobile-design showcase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Bodoni+Moda:opsz,wght@6..96,400..700&family=Fraunces:opsz,wght@9..144,300..800&family=Geist+Mono:wght@400;500&family=Geist:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#cases">Skip to cases</a>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="i-chevron-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></symbol>
+        <symbol id="i-chevron-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></symbol>
+        <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="M20 12H5M11 5.5L4.5 12 11 18.5" /></symbol>
+        <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.6" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" /><circle cx="18.5" cy="12" r="1.6" fill="currentColor" stroke="none" /></symbol>
+        <symbol id="i-more-v" viewBox="0 0 24 24"><circle cx="12" cy="5.5" r="1.6" fill="currentColor" stroke="none" /><circle cx="12" cy="12" r="1.6" fill="currentColor" stroke="none" /><circle cx="12" cy="18.5" r="1.6" fill="currentColor" stroke="none" /></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7" /></symbol>
+        <symbol id="i-faceid" viewBox="0 0 24 24"><path d="M4 8.5V6.5A2.5 2.5 0 0 1 6.5 4h2M15.5 4h2A2.5 2.5 0 0 1 20 6.5v2M20 15.5v2a2.5 2.5 0 0 1-2.5 2.5h-2M8.5 20h-2A2.5 2.5 0 0 1 4 17.5v-2M9 9v1.5M15 9v1.5M12.5 9v3.8h-1M9.2 16c1.6 1.2 4 1.2 5.6 0" /></symbol>
+        <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="9.5" rx="2.2" /><path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" /></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.2" /><path d="M20 20l-4.6-4.6" /></symbol>
+        <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 7h16M7 12h10M10 17h4" /></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 1.5h-15zM10 20.5a2.2 2.2 0 0 0 4 0" /></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" /></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></symbol>
+        <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 14.6V5.5a2 2 0 0 0-4 0v9.1a4 4 0 1 0 4 0z" /></symbol>
+        <symbol id="i-inbox" viewBox="0 0 24 24"><path d="M4 13.5L6 5h12l2 8.5M4 13.5V19h16v-5.5M4 13.5h5l1.2 2h3.6l1.2-2h5" /></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8.5" r="3.5" /><path d="M5 19.5c1.2-3.3 3.8-5 7-5s5.8 1.7 7 5" /></symbol>
+        <symbol id="i-archive" viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="4.5" rx="1.2" /><path d="M5 9v9.5A1.5 1.5 0 0 0 6.5 20h11a1.5 1.5 0 0 0 1.5-1.5V9M10 13h4" /></symbol>
+        <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" /><path d="M12 3.5v2.2M12 18.3v2.2M20.5 12h-2.2M5.7 12H3.5M18 6l-1.6 1.6M7.6 16.4L6 18M18 18l-1.6-1.6M7.6 7.6L6 6" /></symbol>
+        <symbol id="i-wifi-off" viewBox="0 0 24 24"><path d="M3 3l18 18M8.5 16a5 5 0 0 1 7 0M5 12.5a10 10 0 0 1 4.2-2.3M14.6 10.2A10 10 0 0 1 19 12.5M2 9a15 15 0 0 1 4.3-2.8M10.2 5.1A15 15 0 0 1 22 9M12 19.5h.01" /></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z" /><circle cx="12" cy="10" r="2.3" /></symbol>
+        <symbol id="i-pin-off" viewBox="0 0 24 24"><path d="M3 3l18 18M9.2 4.2A6.5 6.5 0 0 1 18.5 10c0 1.6-.6 3.3-1.5 4.8M14.8 17.8C13.2 19.7 12 21 12 21s-6.5-5.8-6.5-11c0-.9.2-1.8.5-2.6" /></symbol>
+        <symbol id="i-battery" viewBox="0 0 24 24"><rect x="2.5" y="7" width="17" height="10" rx="2.5" /><path d="M22 10.5v3M5.5 10v4" /></symbol>
+        <symbol id="i-restore" viewBox="0 0 24 24"><path d="M4 12a8 8 0 1 0 2.4-5.7M4 4.5v4h4" /><path d="M12 8v4.2l2.8 1.8" /></symbol>
+        <symbol id="i-pause" viewBox="0 0 24 24"><path d="M9 6v12M15 6v12" /></symbol>
+        <symbol id="i-flag" viewBox="0 0 24 24"><path d="M5.5 21V4M5.5 4.5h11l-2 4 2 4h-11" /></symbol>
+        <symbol id="i-bag" viewBox="0 0 24 24"><path d="M5.5 8h13l-1 12h-11zM9 8V7a3 3 0 0 1 6 0v1" /></symbol>
+        <symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 6.5h11v9H3zM14 9.5h4l3 3v3h-7" /><circle cx="7" cy="17.5" r="1.8" /><circle cx="17" cy="17.5" r="1.8" /></symbol>
+        <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 3L5 13.5h6L10 21l8-10.5h-6z" /></symbol>
+        <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" /><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4" /></symbol>
+        <symbol id="i-moon" viewBox="0 0 24 24"><path d="M19.5 14.5A7.5 7.5 0 1 1 9.5 4.5a6 6 0 0 0 10 10z" /></symbol>
+        <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8.5" y="8.5" width="11" height="11" rx="2.2" /><path d="M15.5 8.5V6.5a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h2" /></symbol>
+        <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><path d="M7 17L17 7M8.5 7H17v8.5" /></symbol>
+        <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 15V4M7.5 8.5L12 4l4.5 4.5M6 12.5v6A1.5 1.5 0 0 0 7.5 20h9a1.5 1.5 0 0 0 1.5-1.5v-6" /></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" /><path d="M12 11v5.5M12 7.8h.01" /></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3zM12 10v4.5M12 17.3h.01" /></symbol>
+        <symbol id="i-reply" viewBox="0 0 24 24"><path d="M9.5 7L4.5 12l5 5M4.5 12H14a5.5 5.5 0 0 1 5.5 5.5" /></symbol>
+        <symbol id="s-signal" viewBox="0 0 18 12"><rect x="0" y="8" width="3" height="4" rx=".8" /><rect x="5" y="5.5" width="3" height="6.5" rx=".8" /><rect x="10" y="3" width="3" height="9" rx=".8" /><rect x="15" y="0" width="3" height="12" rx=".8" /></symbol>
+        <symbol id="s-wifi" viewBox="0 0 16 12"><path d="M8 11.6l2.4-2.9a3.8 3.8 0 0 0-4.8 0zM3.8 6.6a6.6 6.6 0 0 1 8.4 0l1.4-1.7a8.8 8.8 0 0 0-11.2 0zM.2 3.1L1.6 4.8a10.4 10.4 0 0 1 12.8 0l1.4-1.7a12.6 12.6 0 0 0-15.6 0z" /></symbol>
+        <symbol id="s-battery" viewBox="0 0 27 13"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.4" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.1" /><rect x="2.4" y="2.4" width="17" height="8.2" rx="1.8" /><path d="M25 4.5v4a2.2 2.2 0 0 0 0-4z" fill-opacity=".45" /></symbol>
+        <symbol id="s-battery-low" viewBox="0 0 27 13"><rect x=".6" y=".6" width="22.8" height="11.8" rx="3.4" fill="none" stroke="currentColor" stroke-opacity=".4" stroke-width="1.1" /><rect x="2.4" y="2.4" width="3" height="8.2" rx="1.2" fill="#d6372a" /><path d="M25 4.5v4a2.2 2.2 0 0 0 0-4z" fill-opacity=".45" /></symbol>
+      </defs>
+    </svg>
+
+    <a class="skip-link" href="#modes">Skip to the cases</a>
+
     <header class="site-header">
-      <a class="wordmark" href="#top" aria-label="mobile-design showcase home">
-        <span class="wordmark-mark">m</span>
+      <a class="wordmark" href="#top" aria-label="mobile-design showcase, back to top">
+        <span class="wordmark-mark" aria-hidden="true">m</span>
         <span>mobile-design</span>
-        <span class="wordmark-muted">showcase</span>
+        <span class="wordmark-version">1.0</span>
       </a>
-      <nav aria-label="Primary navigation">
-        <a href="#cases">Cases</a>
-        <a href="#method">Method</a>
-        <a href="https://www.skills.sh/rubenglez/mobile-design" target="_blank" rel="noreferrer">Install ↗</a>
-        <a href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Repository ↗</a>
+      <nav aria-label="Primary">
+        <a href="#modes">Modes</a>
+        <a href="#method">How it works</a>
+        <a href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="nav-install" href="https://www.skills.sh/rubenglez/mobile-design" target="_blank" rel="noreferrer">Install</a>
       </nav>
     </header>
 
     <main id="top">
+      <!-- Hero -->
       <section class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">An agent skill for coding agents</p>
-          <h1>Mobile UI judgment for coding agents.</h1>
+          <a class="release-pill" href="https://github.com/RubenGlez/mobile-design/blob/main/CHANGELOG.md" target="_blank" rel="noreferrer">
+            <span class="release-tag">New</span> Version 1.0: six modes, any stack
+            <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right" /></svg>
+          </a>
+          <h1>The senior mobile designer your agent <em>was missing.</em></h1>
           <p class="hero-lede">
-            mobile-design helps coding agents design, implement, and review React Native, Expo,
-            iOS, and Android UI with production-minded states, accessibility, and platform constraints.
+            mobile-design is an agent skill that shapes briefs, designs screens, critiques, refines, hardens, and adapts
+            iOS and Android interfaces. It delivers decisions, not mockup filler: structure, tokens, states, copy, and
+            motion that hold in native, cross-platform, or web code.
           </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#cases">See the skill in action</a>
-            <a class="button button-secondary" href="https://www.skills.sh/rubenglez/mobile-design" target="_blank" rel="noreferrer">Install via skills.sh ↗</a>
-            <a class="repository-link" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">View the repository ↗</a>
+          <div class="install">
+            <code id="install-cmd">npx skills add RubenGlez/mobile-design</code>
+            <button class="copy-button" type="button" data-copy="#install-cmd">
+              <svg class="i" aria-hidden="true"><use href="#i-copy" /></svg><span>Copy</span>
+            </button>
           </div>
-          <div class="install-command"><span>Install</span><code>npx skills add RubenGlez/mobile-design</code></div>
+          <div class="hero-links">
+            <a class="button button-primary" href="#modes">See the six modes</a>
+            <a class="text-link" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Read the skill on GitHub <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a>
+          </div>
         </div>
-        <aside class="hero-proof" aria-label="What the cases demonstrate">
-          <p class="proof-label">Every case includes</p>
-          <ul>
-            <li><span>01</span> Design rationale</li>
-            <li><span>02</span> Interactive state changes</li>
-            <li><span>03</span> A prompt you can reuse</li>
-          </ul>
-        </aside>
+
+        <figure class="read-card" aria-label="Example of what the skill writes before designing">
+          <div class="read-card-top">
+            <span class="read-card-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span>What your agent writes first</span>
+          </div>
+          <div class="read-card-body" data-read-card aria-live="polite">
+            <p class="read-line"><span class="k">Read</span><span data-read="read">Reading this as: a one-off transfer for an anxious, occasional sender, with a calm, exact interface, on iOS and Android.</span></p>
+            <p class="read-line"><span class="k">Thesis</span><span data-read="thesis">One job: send the right amount to the right person. Remembered by a settlement line that never lies.</span></p>
+            <p class="read-line"><span class="k">Mirror test</span><span data-read="mirror">A generic bank would show a success tick after sending. Changed: “sent” and “arrived” are separate, timed states.</span></p>
+          </div>
+          <figcaption>
+            <span data-read="case">From case 02, Solace</span>
+            <span class="read-card-nav" role="group" aria-label="Show another example">
+              <button type="button" data-read-step="-1" aria-label="Previous example"><svg class="i" aria-hidden="true"><use href="#i-chevron-left" /></svg></button>
+              <button type="button" data-read-step="1" aria-label="Next example"><svg class="i" aria-hidden="true"><use href="#i-chevron-right" /></svg></button>
+            </span>
+          </figcaption>
+        </figure>
       </section>
 
-      <section class="case-index" aria-label="Case index">
-        <a href="#fintech"><span>01</span> Trust after a transfer</a>
-        <a href="#cycling"><span>02</span> Safety without signal</a>
-        <a href="#checkout"><span>03</span> Checkout beyond English</a>
-        <a href="#audit"><span>04</span> Design audit in action</a>
+      <section class="facts" aria-label="What is in the skill">
+        <div><strong>6</strong><span>modes, each with its own playbook</span></div>
+        <div><strong>19</strong><span>references loaded only when a task needs them</span></div>
+        <div><strong>16</strong><span>critique rules with stable IDs</span></div>
+        <div><strong>0</strong><span>framework lock-in: decisions in pt, dp, and roles</span></div>
       </section>
 
-      <section id="cases" class="cases" aria-label="Interactive case studies">
-        <article id="fintech" class="case case-fintech">
-          <div class="case-copy">
-            <p class="eyebrow">01 · Fintech</p>
-            <h2>A transfer confirmation that earns confidence.</h2>
-            <p>
-              Solace makes the irreversible decision explicit, keeps the amount and recipient in
-              view, and avoids treating a pending payment as a success.
-            </p>
-            <dl class="case-facts">
-              <div><dt>Design read</dt><dd>Calm, explicit, iOS + Android</dd></div>
-              <div><dt>Dial choice</dt><dd>Low motion, low visual variance</dd></div>
-              <div><dt>State shown</dt><dd>Review → pending → sent</dd></div>
-            </dl>
-            <details class="prompt">
-              <summary>View the prompt</summary>
-              <code>Design a banking transfer confirmation for iOS and Android. Make the recipient, amount, risk, recovery, and platform divergence explicit.</code>
-            </details>
-          </div>
-          <div class="demo-stage finance-stage">
-            <div class="phone phone-finance" data-demo="finance">
-              <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
-              <div class="app-topline"><button class="icon-button" aria-label="Go back">‹</button><span>Review transfer</span><button class="icon-button" aria-label="More options">•••</button></div>
-              <div class="finance-screen finance-review">
-                <p class="screen-kicker">You’re sending</p>
-                <p class="money">$420.00</p>
-                <div class="recipient"><span class="avatar avatar-maya">M</span><div><strong>Maya Thompson</strong><small>•••• 0198</small></div><span class="verified">✓</span></div>
-                <div class="summary-list"><div><span>Arrives</span><strong>Today</strong></div><div><span>Fee</span><strong>$0.00</strong></div><div><span>From</span><strong>Daily account</strong></div></div>
-                <p class="notice">Review the recipient and amount. Transfers may not be reversible once sent.</p>
-              </div>
-              <div class="finance-screen finance-pending" hidden>
-                <div class="pending-orbit" aria-hidden="true"></div><p class="screen-kicker">Sending securely</p><h3>Do not close the app</h3><p>We’re confirming your transfer to Maya.</p>
-              </div>
-              <div class="finance-screen finance-success" hidden>
-                <div class="success-mark">✓</div><p class="screen-kicker">Transfer sent</p><h3>$420.00 is on its way to Maya</h3><p>We’ll notify you if anything changes.</p><a href="#fintech" class="text-action">View receipt</a>
-              </div>
-              <div class="phone-bottom"><button class="primary-action" data-action="finance">Send $420.00</button><small data-label="finance">You’ll confirm with Face ID</small></div>
-            </div>
-          </div>
-        </article>
-
-        <article id="cycling" class="case case-cycling case-reverse">
-          <div class="case-copy">
-            <p class="eyebrow">02 · Outdoor safety</p>
-            <h2>A ride log that stays honest when the network disappears.</h2>
-            <p>
-              Trailguard designs for motion, location consent, battery awareness, and a route that
-              can remain safely on-device until a rider chooses to sync.
-            </p>
-            <dl class="case-facts">
-              <div><dt>Design read</dt><dd>Outdoor, high contrast, safety-critical</dd></div>
-              <div><dt>Risk preflight</dt><dd>Location, background execution, offline sync</dd></div>
-              <div><dt>Fallback</dt><dd>Manual ride mode with no invented route</dd></div>
-            </dl>
-            <details class="prompt">
-              <summary>View the prompt</summary>
-              <code>Design a cycling-safety feature for React Native/Expo that records rides with background location and an offline route log. Keep the app useful if location or connectivity is unavailable.</code>
-            </details>
-          </div>
-          <div class="demo-stage trail-stage">
-            <div class="phone phone-trail" data-demo="trail">
-              <div class="phone-status trail-status"><span>9:41</span><span>● 5G ▰</span></div>
-              <div class="trail-map" aria-label="Illustrated ride route map"><span class="map-label">Riverside loop</span><svg viewBox="0 0 280 290" aria-hidden="true"><path d="M38 231C70 184 49 124 93 96s63 39 110 8 55-81 33-98"/><path class="route-dot" d="M38 231C70 184 49 124 93 96s63 39 110 8 55-81 33-98"/></svg><span class="route-start">●</span><span class="route-end">◆</span></div>
-              <section class="ride-card">
-                <div class="ride-heading"><div><span class="recording-dot"></span> Recording</div><button class="small-control" data-action="trail-network">Go offline</button></div>
-                <div class="ride-metrics"><div><strong>12.4</strong><span>km</span></div><div><strong>00:38</strong><span>time</span></div><div><strong data-label="trail-gps">Strong</strong><span>GPS</span></div></div>
-                <p class="sync-state" data-label="trail-sync">Saved on this device · Syncing when online</p>
-                <div class="ride-actions"><button class="secondary-action">Pause</button><button class="primary-action">Finish ride</button></div>
-              </section>
-            </div>
-          </div>
-        </article>
-
-        <article id="checkout" class="case case-checkout">
-          <div class="case-copy">
-            <p class="eyebrow">03 · Commerce + localization</p>
-            <h2>Checkout that survives RTL, long copy, and a resized window.</h2>
-            <p>
-              Maison North makes language, direction, currency, and compact-to-wide layout part of
-              the product contract instead of a final translation pass.
-            </p>
-            <dl class="case-facts">
-              <div><dt>Design read</dt><dd>Editorial commerce, decisive, cross-platform</dd></div>
-              <div><dt>Modes</dt><dd>English / Arabic and compact / wide</dd></div>
-              <div><dt>State shown</dt><dd>Safe form completion with order summary</dd></div>
-            </dl>
-            <details class="prompt">
-              <summary>View the prompt</summary>
-              <code>Design a commerce checkout localized for Arabic and German. Cover RTL, long strings, currency formatting, form keyboard flow, and tablet layouts.</code>
-            </details>
-          </div>
-          <div class="demo-stage checkout-stage">
-            <div class="phone phone-checkout" data-demo="checkout">
-              <div class="checkout-controls"><button class="segment active" data-action="checkout-en">EN</button><button class="segment" data-action="checkout-ar">ع</button><button class="wide-toggle" data-action="checkout-wide">↔ Wide</button></div>
-              <div class="checkout-content">
-                <div class="checkout-title"><span class="shop-mark">M</span><div><small>Maison North</small><h3 data-label="checkout-title">Delivery details</h3></div><span class="step">2 of 3</span></div>
-                <div class="address-form"><label data-label="checkout-name">Full name<input value="Maya Thompson" aria-label="Full name" /></label><label data-label="checkout-address">Address<input value="17 Chapel Lane" aria-label="Address" /></label><div class="form-grid"><label data-label="checkout-city">City<input value="London" aria-label="City" /></label><label data-label="checkout-postcode">Postcode<input value="N1 8QZ" aria-label="Postcode" /></label></div></div>
-                <div class="order-summary"><div class="coat-thumb" aria-hidden="true"></div><div><strong data-label="checkout-product">Wool wrap coat</strong><small data-label="checkout-delivery">Standard delivery · 2–4 days</small></div><b data-label="checkout-price">$320.00</b></div>
-              </div>
-              <div class="phone-bottom checkout-bottom"><button class="primary-action" data-label="checkout-continue">Continue to payment</button><small data-label="checkout-total">Total $320.00</small></div>
-            </div>
-          </div>
-        </article>
-
-        <article id="audit" class="case case-audit case-reverse">
-          <div class="case-copy">
-            <p class="eyebrow">04 · Design audit</p>
-            <h2>Turn vague visual discomfort into an actionable fix list.</h2>
-            <p>
-              The audit starts with a weak support screen, names the issues by severity, then
-              rebuilds hierarchy, targets, state, and recovery without a decorative rewrite.
-            </p>
-            <dl class="case-facts">
-              <div><dt>Review method</dt><dd>Severity, rule ID, location, required fix</dd></div>
-              <div><dt>Problems found</dt><dd>Target size, hierarchy, swipe-only delete</dd></div>
-              <div><dt>Result</dt><dd>Keyboard-friendly, understandable in five seconds</dd></div>
-            </dl>
-            <details class="prompt">
-              <summary>View the prompt</summary>
-              <code>Review a mobile support queue with small icon actions, unclear priority, and swipe-only delete. Report issues with severity and required fixes.</code>
-            </details>
-          </div>
-          <div class="demo-stage audit-stage">
-            <div class="audit-tabs" role="tablist" aria-label="Audit state"><button class="segment active" role="tab" aria-selected="true" data-action="audit-before">Before</button><button class="segment" role="tab" aria-selected="false" data-action="audit-after">After</button></div>
-            <div class="phone phone-audit" data-demo="audit">
-              <div class="phone-status"><span>9:41</span><span>● ● ●</span></div>
-              <div class="audit-before-screen">
-                <div class="messy-header"><span>Inbox</span><button>⚙</button><button>⌕</button><button>⋮</button></div><p class="tiny-title">Support tickets</p>
-                <div class="messy-row"><span class="tiny-avatar"></span><div><b>Refund maybe?</b><small>Can someone help, it has been...</small></div><span>›</span></div><div class="messy-row"><span class="tiny-avatar orange"></span><div><b>What is this charge</b><small>Yesterday · #94821</small></div><span>›</span></div><div class="messy-row"><span class="tiny-avatar purple"></span><div><b>Urgent access</b><small>Please help please help please...</small></div><span>›</span></div>
-                <p class="swipe-hint">Swipe a row to delete</p>
-              </div>
-              <div class="audit-after-screen" hidden>
-                <div class="support-header"><div><small>SUPPORT QUEUE</small><h3>Needs attention</h3></div><button class="icon-button" aria-label="Search tickets">⌕</button></div>
-                <div class="filter-row"><button class="filter active">All <b>12</b></button><button class="filter">Urgent <b>3</b></button><button class="filter">Waiting <b>5</b></button></div>
-                <div class="ticket urgent"><span class="priority-dot"></span><div><strong>Account access blocked</strong><small>Amir Khan · 2 min ago</small></div><button class="row-action">Open</button></div><div class="ticket"><span class="priority-dot quiet"></span><div><strong>Unexpected card charge</strong><small>Lena Cruz · 18 min ago</small></div><button class="row-action">Open</button></div><div class="ticket"><span class="priority-dot quiet"></span><div><strong>Refund status</strong><small>Sam Ito · 42 min ago</small></div><button class="row-action">Open</button></div>
-                <button class="clear-button">Manage closed tickets</button>
-              </div>
-            </div>
-            <div class="audit-findings" data-label="audit-findings"><span>P1 · MD-001</span> Delete has no visible alternative<br /><span>P1 · MD-004</span> Icon targets are too small<br /><span>P2 · MD-008</span> Priority is not scannable</div>
-          </div>
-        </article>
-      </section>
-
-      <section id="method" class="method">
-        <div><p class="eyebrow">The method</p><h2>What changes when the design is treated as a product decision.</h2></div>
-        <ol>
-          <li><span>01</span><div><strong>Read the context</strong><p>Audience, environment, platform, constraints, task success.</p></div></li>
-          <li><span>02</span><div><strong>Design the states</strong><p>Not just the default screen, also loading, denied, offline, error, and recovery.</p></div></li>
-          <li><span>03</span><div><strong>Verify the contract</strong><p>Accessibility, window size, input methods, localization, and real runtime limits.</p></div></li>
+      <!-- Mode index -->
+      <section id="modes" class="modes" aria-labelledby="modes-title">
+        <div class="section-head">
+          <h2 id="modes-title">Six modes. Six fictional products, each designed to be unmistakable.</h2>
+          <p>Every case is interactive and shows what the skill delivers in that mode, with the prompt that started it. The products are invented; the decisions are the real output of the method.</p>
+        </div>
+        <ol class="mode-grid">
+          <li><a href="#shape" style="--tile:#c9673f"><span class="mode-n">01</span><strong>Shape</strong><span>Turn a one-line request into a brief worth designing.</span><em>Kiln, ceramics studio</em></a></li>
+          <li><a href="#design" style="--tile:#1e5b49"><span class="mode-n">02</span><strong>Design</strong><span>A screen built around one object it is known by.</span><em>Solace, bank transfer</em></a></li>
+          <li><a href="#critique" style="--tile:#3b3f8f"><span class="mode-n">03</span><strong>Critique</strong><span>Ranked findings, each with the fix and the reason.</span><em>Relay, support desk</em></a></li>
+          <li><a href="#refine" style="--tile:#c98a12"><span class="mode-n">04</span><strong>Refine</strong><span>Quieter, bolder, or distilled, inside the same identity.</span><em>Levain, bread timer</em></a></li>
+          <li><a href="#harden" style="--tile:#0f5132"><span class="mode-n">05</span><strong>Harden</strong><span>The states a demo never shows, designed first.</span><em>Trailguard, ride log</em></a></li>
+          <li><a href="#adapt" style="--tile:#6b1e1e"><span class="mode-n">06</span><strong>Adapt</strong><span>Platforms, languages, and windows, translated not transplanted.</span><em>Maison North, checkout</em></a></li>
         </ol>
       </section>
 
-      <section class="closing"><p class="eyebrow">Try it on a real app</p><h2>Give your coding agent a mobile brief with consequences.</h2><a class="button button-primary" href="https://www.skills.sh/rubenglez/mobile-design" target="_blank" rel="noreferrer">Install via skills.sh ↗</a><a class="closing-repository" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">View the repository ↗</a></section>
+      <!-- 01 SHAPE -->
+      <article id="shape" class="case" style="--brand:#c9673f; --stage:#e9d5c3">
+        <div class="case-copy">
+          <p class="mode-label"><span>01</span> Shape mode</p>
+          <h2>From a one-line request to a brief worth designing.</h2>
+          <p class="case-lede">“Make an app for our ceramics studio.” Shape mode asks only the questions that would change the design, proposes an answer for each so you can just confirm, and stops at a brief. No pixels yet.</p>
+          <dl class="output">
+            <div><dt>Asks</dt><dd>One round, at most three questions, each with the likely answer already stated.</dd></div>
+            <div><dt>Never asks</dt><dd>Hex codes, spacing, or anything a designer should decide.</dd></div>
+            <div><dt>Ends with</dt><dd>The smallest brief that settles the decisions, then stops for confirmation.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>Use mobile-design to plan an app for our ceramics studio members. Don’t design screens yet.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-kiln">
+          <div class="kiln" data-kiln data-step="0">
+            <div class="kiln-chat">
+              <div class="msg msg-user"><span class="msg-who">You</span><p>Make an app for our ceramics studio members.</p></div>
+              <div class="msg msg-agent">
+                <span class="msg-who">Agent, in Shape mode</span>
+                <p>Reading this as a members’ utility for a shared studio, used between wheel sessions with clay on their hands, on iOS and Android. Three questions; I’ve assumed an answer for each.</p>
+              </div>
+              <ol class="kiln-qs">
+                <li data-q="0">
+                  <p class="q-text">What do members most need from it?</p>
+                  <p class="q-assume">When their piece comes out of the kiln. The firing queue is the core, not class booking.</p>
+                </li>
+                <li data-q="1">
+                  <p class="q-text">In what state do they reach for it?</p>
+                  <p class="q-assume">A glance, one thumb, wet or muddy hands. A tablet on the studio wall shows the same queue.</p>
+                </li>
+                <li data-q="2">
+                  <p class="q-text">What is true here that no booking app could claim?</p>
+                  <p class="q-assume">Results are uncertain. Pieces crack and glazes surprise. Status must be honest, not cheerful.</p>
+                </li>
+              </ol>
+              <div class="kiln-actions">
+                <button type="button" class="stage-button" data-kiln-confirm>Confirm answer 1</button>
+                <button type="button" class="stage-button ghost" data-kiln-reset>Start over</button>
+              </div>
+            </div>
+
+            <article class="brief" aria-label="Brief for Kiln, written as answers are confirmed" aria-live="polite">
+              <header class="brief-head">
+                <span class="brief-logo" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 20h14M7 20V10l5-5 5 5v10M10 20v-5h4v5" /></svg></span>
+                <div><small>Brief</small><h3>Kiln, members’ app</h3></div>
+                <span class="brief-status" data-kiln-status>Draft</span>
+              </header>
+              <section data-fill="1"><h4>Job and audience</h4><p>Members checking on their pieces between sessions: one thumb, hands not clean. The studio’s wall tablet is a second surface for the same queue.</p><span class="skeleton" aria-hidden="true"><i></i><i></i></span></section>
+              <section data-fill="0"><h4>Outcome</h4><p>Know where every piece is, from queued to loaded, firing, cooling, ready, or cracked. Success is never having to ask staff.</p><span class="skeleton" aria-hidden="true"><i></i><i></i></span></section>
+              <section data-fill="2"><h4>Direction</h4><p>A calm workshop utility. Signature: the kiln shelf, with each member’s pieces drawn on the shelf they fire on.</p>
+                <svg class="shelf" viewBox="0 0 260 64" aria-hidden="true"><path class="shelf-line" d="M6 28h248M6 58h248" /><path class="pot" d="M24 28c-3-6-3-12 2-16h10c5 4 5 10 2 16z" /><path class="pot mine" d="M62 28c-6-2-8-10-3-15l2-3h8l2 3c5 5 3 13-3 15z" /><path class="pot" d="M104 28v-14h16v14z" /><path class="pot mine" d="M150 28c-4-8 0-18 9-18s13 10 9 18z" /><path class="pot" d="M200 28c-2-4-1-9 3-11h12c4 2 5 7 3 11z" /><path class="pot" d="M30 58c-4-8 1-16 9-16s13 8 9 16z" /><path class="pot mine" d="M88 58v-18h10l4 6v12z" /><path class="pot" d="M138 58c-3-5-2-12 4-14h10c6 2 7 9 4 14z" /><path class="pot cracked" d="M196 58c-4-8 0-16 10-16s14 8 10 16zM204 44l3 5-3 4 3 5" /></svg>
+                <span class="skeleton" aria-hidden="true"><i></i><i></i></span></section>
+              <section data-fill="2"><h4>States and ranges</h4><p>No pieces yet. One to forty pieces per member. Firing delayed. A cracked piece: show the photo, say it plainly, link the reclaim policy.</p><span class="skeleton" aria-hidden="true"><i></i><i></i></span></section>
+              <section data-fill="1"><h4>Constraints</h4><p>Large targets for wet hands. A notification when a firing ends. Readable from a metre away on the wall tablet.</p><span class="skeleton" aria-hidden="true"><i></i><i></i></span></section>
+              <footer class="brief-foot" data-kiln-foot>Confirm the three answers to complete the brief.</footer>
+            </article>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 DESIGN -->
+      <article id="design" class="case case-reverse" style="--brand:#1e5b49; --stage:#cfe0d6">
+        <div class="case-copy">
+          <p class="mode-label"><span>02</span> Design mode</p>
+          <h2>A transfer that never calls pending a success.</h2>
+          <p class="case-lede">Solace is a fictional bank for people who move money rarely and worry when they do. The screen is built around one object, the settlement line, and it tells the truth at every step.</p>
+          <dl class="output">
+            <div><dt>Read</dt><dd>A one-off transfer for an anxious, occasional sender, with a calm, exact interface, on iOS and Android.</dd></div>
+            <div><dt>Signature</dt><dd>The settlement line: approved, sent, arrived, each with a real time. Arrival is never claimed before the receiving bank confirms it.</dd></div>
+            <div><dt>States</dt><dd>Review, authenticating, sending, sent, arrived. Failed keeps the money visibly in your account.</dd></div>
+            <div><dt>System</dt><dd>Ink #14211D on bone #F6F4EF, 15.1:1. Accent #1E5B49 only on the one action, white label at 7.9:1. Dark mode mirrors every role.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>Design the transfer confirmation for Solace, a bank for occasional senders. iOS and Android, light and dark. Show every state through to arrival.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-solace">
+          <div class="stage-controls">
+            <div class="segmented" role="group" aria-label="Appearance">
+              <button type="button" aria-pressed="true" data-solace-theme="light"><svg class="i" aria-hidden="true"><use href="#i-sun" /></svg>Light</button>
+              <button type="button" aria-pressed="false" data-solace-theme="dark"><svg class="i" aria-hidden="true"><use href="#i-moon" /></svg>Dark</button>
+            </div>
+            <button type="button" class="stage-button ghost small" data-solace-reset>Start over</button>
+          </div>
+
+          <div class="device ios" style="--vt:solace">
+            <div class="screen solace" data-solace data-state="review" data-theme="light">
+              <div class="sb"><span class="sb-time">9:41</span><span class="sb-icons"><svg><use href="#s-signal" /></svg><svg><use href="#s-wifi" /></svg><svg class="sb-batt"><use href="#s-battery" /></svg></span></div>
+              <span class="island" aria-hidden="true"></span>
+
+              <div class="sl-nav">
+                <button type="button" class="sl-icon" aria-label="Back"><svg class="i"><use href="#i-chevron-left" /></svg></button>
+                <span class="sl-nav-title" data-sl="title">Review transfer</span>
+                <span class="sl-icon-space"></span>
+              </div>
+
+              <div class="sl-body">
+                <div class="sl-hero">
+                  <div class="sl-recipient">
+                    <span class="sl-avatar" aria-hidden="true">MT</span>
+                    <div><strong>Maya Thompson</strong><small>Account ending 0198</small></div>
+                  </div>
+                  <p class="sl-amount" aria-label="420 pounds"><span class="cur">£</span>420<span class="dec">.00</span></p>
+                  <p class="sl-status" data-sl="status">You’re about to send</p>
+                </div>
+
+                <ol class="settle" aria-label="Settlement progress">
+                  <li data-step="approve"><span class="node" aria-hidden="true"><svg class="i"><use href="#i-check" /></svg></span><div><strong>You approve</strong><small data-sl="t1">With Face ID</small></div></li>
+                  <li data-step="send"><span class="node" aria-hidden="true"><svg class="i"><use href="#i-check" /></svg></span><div><strong>Leaves your account</strong><small data-sl="t2">Straight after you approve</small></div></li>
+                  <li data-step="arrive"><span class="node" aria-hidden="true"><svg class="i"><use href="#i-check" /></svg></span><div><strong>Arrives with Maya</strong><small data-sl="t3">Usually within 2 hours</small></div></li>
+                </ol>
+
+                <dl class="sl-rows">
+                  <div><dt>From</dt><dd>Everyday, ending 0412</dd></div>
+                  <div><dt>Fee</dt><dd>None</dd></div>
+                </dl>
+                <p class="sl-note" data-sl="note">Transfers can’t be cancelled once they leave your account. Check it’s Maya.</p>
+              </div>
+
+              <div class="sl-footer">
+                <button type="button" class="sl-cta" data-solace-cta><span data-sl="cta">Send £420.00</span></button>
+                <button type="button" class="sl-secondary" data-solace-secondary hidden>Share receipt</button>
+              </div>
+
+              <div class="faceid" aria-hidden="true"><div class="faceid-box"><svg class="i"><use href="#i-faceid" /></svg><span>Face ID</span></div></div>
+              <span class="home-ind" aria-hidden="true"></span>
+            </div>
+          </div>
+
+          <div class="state-rail" aria-label="Current state">
+            <span data-rail="review" class="on">Review</span><span data-rail="sending">Sending</span><span data-rail="sent">Sent</span><span data-rail="arrived">Arrived</span>
+          </div>
+          <button type="button" class="stage-button small" data-solace-arrive disabled>Simulate the bank confirming arrival</button>
+        </div>
+      </article>
+
+      <!-- 03 CRITIQUE -->
+      <article id="critique" class="case" style="--brand:#3b3f8f; --stage:#d9dbee">
+        <div class="case-copy">
+          <p class="mode-label"><span>03</span> Critique mode</p>
+          <h2>A review that tells you what to fix first, and why.</h2>
+          <p class="case-lede">Relay’s support queue looks finished and still fails the people who use it. Critique mode reads it like a senior reviewer: first impression, specificity, five lenses in order, then findings ranked P0 to P3, each with its fix.</p>
+          <dl class="output">
+            <div><dt>First impression</dt><dd>It communicates a dashboard template. The eye lands on the greeting, the purple cards, and the emoji, not on who is waiting.</dd></div>
+            <div><dt>Specificity</dt><dd>Interchangeable. Swap the logo and this is any SaaS app. The product’s real object, the queue, starts below the fold.</dd></div>
+            <div><dt>Instruments</dt><dd>Trunk test 3 of 6. Cognitive load high. Goodwill falls from 70 to 35 across the flow.</dd></div>
+            <div><dt>Verdict</dt><dd>Don’t ship. One P0 locks people out of closing tickets.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>Run a full mobile-design critique of Relay’s support queue screen, iOS. We track rule IDs, so include them.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-relay">
+          <div class="stage-controls">
+            <div class="segmented" role="group" aria-label="Critique view">
+              <button type="button" aria-pressed="true" data-relay-view="before">Findings</button>
+              <button type="button" aria-pressed="false" data-relay-view="after">Rebuilt</button>
+            </div>
+          </div>
+
+          <div class="relay-layout" data-relay data-view="before">
+            <div class="device ios" style="--vt:relay">
+              <!-- Before -->
+              <div class="screen relay-before" data-relay-screen="before">
+                <div class="sb"><span class="sb-time">9:41</span><span class="sb-icons"><svg><use href="#s-signal" /></svg><svg><use href="#s-wifi" /></svg><svg class="sb-batt"><use href="#s-battery" /></svg></span></div>
+                <span class="island" aria-hidden="true"></span>
+                <div class="rb-head"><div><small>Welcome back</small><strong>Good morning, Alex 👋</strong></div><span class="rb-mini">🔔</span><span class="rb-mini">⚙️</span></div>
+                <div class="rb-stats">
+                  <div><small>Open</small><b>128</b><i>↑ 12%</i></div><div><small>Urgent</small><b>7</b><i>↑ 3</i></div>
+                  <div><small>CSAT</small><b>98%</b><i>↑ 2%</i></div><div><small>Avg reply</small><b>2h</b><i>↓ 8%</i></div>
+                </div>
+                <div class="rb-section"><span>Recent tickets</span><span class="rb-live"><i></i> Live</span></div>
+                <div class="rb-row"><span class="rb-emoji">🔥</span><div><b>Can’t log in!!!</b><small>Amir K. · 2m · #4821</small></div><span class="rb-dots">⋯</span></div>
+                <div class="rb-row"><span class="rb-emoji">💳</span><div><b>Charged twice</b><small>Lena C. · 18m · #4817</small></div><span class="rb-dots">⋯</span></div>
+                <div class="rb-row"><span class="rb-emoji">📦</span><div><b>Where is my refund</b><small>Sam I. · 42m · #4809</small></div><span class="rb-dots">⋯</span></div>
+                <p class="rb-hint">← Swipe a ticket to delete</p>
+                <span class="rb-fab">+</span>
+                <span class="pin" data-pin="1" style="top:564px; left:56px">1</span>
+                <span class="pin" data-pin="2" style="top:358px; left:46px">2</span>
+                <span class="pin" data-pin="3" style="top:52px; left:240px">3</span>
+                <span class="pin" data-pin="4" style="top:100px; left:134px">4</span>
+                <span class="pin" data-pin="5" style="top:110px; left:64px">5</span>
+                <span class="pin" data-pin="6" style="top:318px; left:266px">6</span>
+                <span class="home-ind" aria-hidden="true"></span>
+              </div>
+
+              <!-- After -->
+              <div class="screen relay-after" data-relay-screen="after" hidden>
+                <div class="sb"><span class="sb-time">9:41</span><span class="sb-icons"><svg><use href="#s-signal" /></svg><svg><use href="#s-wifi" /></svg><svg class="sb-batt"><use href="#s-battery" /></svg></span></div>
+                <span class="island" aria-hidden="true"></span>
+                <div class="ra-bar"><button type="button" class="ra-text-btn">Select</button><span class="ra-bar-actions"><button type="button" class="ra-icon" aria-label="Search tickets"><svg class="i"><use href="#i-search" /></svg></button><button type="button" class="ra-icon" aria-label="Filter tickets"><svg class="i"><use href="#i-filter" /></svg></button></span></div>
+                <h3 class="ra-title">Queue</h3>
+                <div class="ra-seg" role="group" aria-label="Sort"><span class="on">Longest wait</span><span>Urgent 3</span><span>Mine</span></div>
+                <ul class="ra-list">
+                  <li class="ra-ticket">
+                    <div class="ra-line"><strong>Amir Khan</strong><span class="ra-urgent"><svg class="i"><use href="#i-alert" /></svg>Urgent</span></div>
+                    <p>Locked out after changing phone</p>
+                    <div class="ra-promise" style="--used:.86"><span><i></i></span><small>Waiting 3 h 26 min of the 4 h promised</small></div>
+                  </li>
+                  <li class="ra-ticket">
+                    <div class="ra-line"><strong>Lena Cruz</strong></div>
+                    <p>Charged twice for one order</p>
+                    <div class="ra-promise" style="--used:.52"><span><i></i></span><small>Waiting 2 h 05 min of 4 h</small></div>
+                  </li>
+                  <li class="ra-ticket">
+                    <div class="ra-line"><strong>Sam Ito</strong></div>
+                    <p>Refund not showing on my card</p>
+                    <div class="ra-promise" style="--used:.18"><span><i></i></span><small>Waiting 42 min of 4 h</small></div>
+                  </li>
+                </ul>
+                <p class="ra-hint">Touch and hold a ticket, or tap Select, to close or delete.</p>
+                <nav class="ios-tabs" aria-label="Relay sections"><span class="on"><svg class="i"><use href="#i-inbox" /></svg>Queue</span><span><svg class="i"><use href="#i-user" /></svg>Mine</span><span><svg class="i"><use href="#i-archive" /></svg>Closed</span><span><svg class="i"><use href="#i-gear" /></svg>Settings</span></nav>
+                <span class="home-ind" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="report">
+              <div class="report-head"><strong data-relay-title>6 findings</strong><span data-relay-sub>Tap one to locate it</span></div>
+              <ol class="findings" data-relay-findings>
+                <li><button type="button" data-finding="1"><span class="sev p0">P0</span><span class="f-body"><b>Delete exists only as a swipe, with no undo.</b><span>Add Close and Delete to a context menu and to Select mode. Closing replaces deleting, with undo.</span><code>MD-002, MD-005</code></span></button></li>
+                <li><button type="button" data-finding="2"><span class="sev p1">P1</span><span class="f-body"><b>Urgency is carried by a red emoji alone.</b><span>Label it “Urgent” with an icon, and sort urgent tickets first.</span><code>MD-007</code></span></button></li>
+                <li><button type="button" data-finding="3"><span class="sev p1">P1</span><span class="f-body"><b>Bell and settings are 20pt emoji with no names.</b><span>44pt targets with accessible names; settings moves to the tab bar.</span><code>MD-001</code></span></button></li>
+                <li><button type="button" data-finding="4"><span class="sev p1">P1</span><span class="f-body"><b>A greeting and four stat cards push the queue down.</b><span>The queue first, ordered by how long each customer has waited.</span><code>MD-013</code></span></button></li>
+                <li><button type="button" data-finding="5"><span class="sev p2">P2</span><span class="f-body"><b>Lilac labels on purple read at 2.0:1.</b><span>Opaque surfaces and text at 4.5:1 or more, in light and dark.</span><code>MD-007</code></span></button></li>
+                <li><button type="button" data-finding="6"><span class="sev p3">P3</span><span class="f-body"><b>The “Live” dot pulses forever.</b><span>A static indicator that animates only when the queue changes.</span><code>MD-008</code></span></button></li>
+              </ol>
+              <ol class="findings resolved" data-relay-resolved hidden>
+                <li><span class="sev ok"><svg class="i"><use href="#i-check" /></svg></span><span class="f-body"><b>Signature: the promise bar.</b><span>Each ticket shows time waited against the reply time Relay promised. The queue is the product.</span></span></li>
+                <li><span class="sev ok"><svg class="i"><use href="#i-check" /></svg></span><span class="f-body"><b>Close and delete are visible.</b><span>Select mode and a context menu; closing is undoable.</span></span></li>
+                <li><span class="sev ok"><svg class="i"><use href="#i-check" /></svg></span><span class="f-body"><b>Urgency reads without colour.</b><span>A labelled tag, and a sort that puts it first.</span></span></li>
+                <li><span class="sev ok"><svg class="i"><use href="#i-check" /></svg></span><span class="f-body"><b>Platform grammar restored.</b><span>Large title, tab bar, 44pt named controls.</span></span></li>
+                <li><span class="sev ok"><svg class="i"><use href="#i-check" /></svg></span><span class="f-body"><b>Nothing invented.</b><span>The satisfaction score left the screen: nobody measured it here.</span></span></li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 REFINE -->
+      <article id="refine" class="case case-reverse" style="--brand:#a8700a; --stage:#f1e2c0">
+        <div class="case-copy">
+          <p class="mode-label"><span>04</span> Refine mode</p>
+          <h2>Same product, three honest directions.</h2>
+          <p class="case-lede">Refinement works inside an identity instead of replacing it. Switch Levain’s bake screen between quieter, bolder, and distilled. Each keeps the content and the function, and changes only what its sub-mode allows.</p>
+          <dl class="output">
+            <div><dt>Read</dt><dd>A bake companion for home bakers mid-recipe, flour on their hands, on iOS.</dd></div>
+            <div><dt>Signature</dt><dd>The rise curve: how far the dough has grown against the target.</dd></div>
+            <div><dt>Rule</dt><dd>A refinement keeps the identity. A redesign treats it as evidence. Never split the difference.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>This Levain bake screen feels busy. Give me quieter, bolder, and distilled versions so I can compare. Keep it Levain.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-levain">
+          <div class="stage-controls">
+            <div class="segmented four" role="group" aria-label="Refine direction">
+              <button type="button" aria-pressed="true" data-levain="original">Original</button>
+              <button type="button" aria-pressed="false" data-levain="quieter">Quieter</button>
+              <button type="button" aria-pressed="false" data-levain="bolder">Bolder</button>
+              <button type="button" aria-pressed="false" data-levain="distill">Distill</button>
+            </div>
+          </div>
+
+          <div class="levain-layout">
+            <div class="device ios" style="--vt:levain">
+              <div class="screen levain" data-levain-screen data-variant="original">
+                <div class="sb"><span class="sb-time">9:41</span><span class="sb-icons"><svg><use href="#s-signal" /></svg><svg><use href="#s-wifi" /></svg><svg class="sb-batt"><use href="#s-battery" /></svg></span></div>
+                <span class="island" aria-hidden="true"></span>
+
+                <header class="lv-head">
+                  <div class="lv-nav"><svg class="i" aria-hidden="true"><use href="#i-chevron-left" /></svg><span class="lv-badge">🔥 12-day streak</span><svg class="i" aria-hidden="true"><use href="#i-more" /></svg></div>
+                  <h3 class="lv-title">Country loaf</h3>
+                  <p class="lv-sub">Bulk ferment, step 3 of 7</p>
+                </header>
+
+                <section class="lv-rise" aria-label="Dough rise">
+                  <div class="lv-rise-top">
+                    <p class="lv-pct"><span class="lv-pct-n">62</span><span class="lv-pct-u">%</span></p>
+                    <p class="lv-pct-label">risen of a 75% target</p>
+                  </div>
+                  <svg class="lv-curve" viewBox="0 0 300 110" preserveAspectRatio="none" aria-hidden="true">
+                    <path class="lv-target" d="M0 22H300" />
+                    <path class="lv-area" d="M0 104C40 102 70 96 100 84S160 52 196 40V110H0z" />
+                    <path class="lv-line" d="M0 104C40 102 70 96 100 84S160 52 196 40" />
+                    <path class="lv-proj" d="M196 40C226 30 262 25 300 23" />
+                    <circle class="lv-dot" cx="196" cy="40" r="5" />
+                  </svg>
+                  <div class="lv-meta"><span><svg class="i" aria-hidden="true"><use href="#i-thermo" /></svg>Dough 24.5 °C</span><span><svg class="i" aria-hidden="true"><use href="#i-clock" /></svg>About 1 h 40 min to go</span></div>
+                </section>
+
+                <section class="lv-next">
+                  <div><small>Next</small><strong>Stretch and fold</strong><span class="lv-next-time">in 12 min</span></div>
+                  <button type="button" class="lv-next-btn">Fold now</button>
+                </section>
+
+                <section class="lv-tip"><span>💡</span><p><b>Pro tip!</b> Warmer water makes your dough rise faster!</p></section>
+
+                <ol class="lv-steps">
+                  <li class="done"><span></span>Levain build</li>
+                  <li class="done"><span></span>Autolyse, 45 min</li>
+                  <li class="now"><span></span>Bulk ferment</li>
+                  <li><span></span>Pre-shape</li>
+                </ol>
+                <button type="button" class="lv-all">All 7 steps</button>
+
+                <span class="lv-fab" aria-hidden="true"><svg class="i"><use href="#i-plus" /></svg></span>
+                <div class="lv-cta-wrap"><button type="button" class="lv-cta">Start next step</button></div>
+                <span class="home-ind" aria-hidden="true"></span>
+              </div>
+            </div>
+
+            <div class="change-note" aria-live="polite">
+              <p class="change-kicker" data-levain-kicker>Shipped version</p>
+              <p class="change-text" data-levain-note>A gradient header, a streak badge, a tips card, a floating button and a bottom button for the same job, and seven type sizes. Nothing is wrong enough to block; everything competes.</p>
+              <ul class="change-list" data-levain-list>
+                <li>Signature present but small</li><li>Two actions for one job</li><li>Accent on six things</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 HARDEN -->
+      <article id="harden" class="case" style="--brand:#0f5132; --stage:#d4e3a8">
+        <div class="case-copy">
+          <p class="mode-label"><span>05</span> Harden mode</p>
+          <h2>A ride log that tells the truth when everything fails.</h2>
+          <p class="case-lede">Harden mode designs the states a demo never shows. Trailguard keeps recording through lost signal, denied location, a dying battery, and the system closing the app, and it never draws a route it didn’t measure.</p>
+          <dl class="output">
+            <div><dt>Risk preflight</dt><dd>Background location: if denied, the ride continues with time only. No network: the log stays on the phone and syncs later. Low battery: fewer route points, and the rider is told the trade-off.</dd></div>
+            <div><dt>Signature</dt><dd>The measured route. Solid where GPS recorded it, a labelled gap where it didn’t, never an interpolated guess.</dd></div>
+            <div><dt>Platform</dt><dd>Android first, with Material 3 components, predictive back, and an ongoing notification while recording.</dd></div>
+            <div><dt>Light, on purpose</dt><dd>Chosen for the use scene, direct sunlight on a handlebar, not for the category.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>Harden Trailguard’s live ride screen on Android. Cover no signal, location off, low battery, and the app being killed mid-ride.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-trail">
+          <div class="stage-controls">
+            <div class="segmented scroll" role="group" aria-label="Ride condition">
+              <button type="button" aria-pressed="true" data-trail="ok">Recording</button>
+              <button type="button" aria-pressed="false" data-trail="offline">No signal</button>
+              <button type="button" aria-pressed="false" data-trail="nolocation">Location off</button>
+              <button type="button" aria-pressed="false" data-trail="battery">Battery 8%</button>
+              <button type="button" aria-pressed="false" data-trail="killed">App closed</button>
+            </div>
+          </div>
+
+          <div class="device android" style="--vt:trail">
+            <div class="screen trail" data-trail-screen data-state="ok">
+              <div class="sb sb-android"><span class="sb-time">10:58</span><span class="punch" aria-hidden="true"></span><span class="sb-icons"><svg data-tr="sig"><use href="#s-signal" /></svg><svg class="sb-batt" data-tr="batt"><use href="#s-battery" /></svg></span></div>
+
+              <div class="tg-bar">
+                <button type="button" class="tg-icon" aria-label="Back"><svg class="i"><use href="#i-arrow-left" /></svg></button>
+                <div class="tg-bar-title"><strong>Riverside loop</strong><small data-tr="rec">Recording since 10:20</small></div>
+                <button type="button" class="tg-icon" aria-label="More options"><svg class="i"><use href="#i-more-v" /></svg></button>
+              </div>
+
+              <div class="tg-map" aria-label="Map of the ride so far">
+                <svg viewBox="0 0 320 250" aria-hidden="true">
+                  <g class="tg-topo"><path d="M-10 60c60-20 90 10 150-8s110-40 190-10" /><path d="M-10 100c70-24 110 14 170-6s100-34 170-6" /><path d="M-10 150c60-18 120 18 180 0s100-26 160-4" /><path d="M-10 200c80-14 120 16 190 0s90-20 150-4" /></g>
+                  <path class="tg-river" d="M-10 226c50-8 80 6 130 0s90-30 140-26 60 8 70 10" />
+                  <path class="tg-route a" d="M40 210C58 176 46 140 84 122s60 20 94-2" />
+                  <path class="tg-route b" d="M206 102c18-14 30-36 52-46s34-20 30-36" />
+                  <path class="tg-route est" d="M178 120c10-6 20-12 28-18" />
+                  <circle class="tg-start" cx="40" cy="210" r="6" />
+                  <g class="tg-gap"><circle cx="178" cy="120" r="5" /><circle cx="206" cy="102" r="5" /></g>
+                  <circle class="tg-me" cx="288" cy="20" r="8" />
+                  <circle class="tg-stop" cx="178" cy="120" r="8" />
+                </svg>
+                <span class="tg-gap-label" data-tr="gaplabel">No route for 3 min</span>
+                <span class="tg-chip" data-tr="chip"><svg class="i"><use href="#i-pin" /></svg><span>GPS good</span></span>
+              </div>
+
+              <div class="tg-banner" data-tr="banner" hidden>
+                <svg class="i tg-banner-icon"><use href="#i-info" /></svg>
+                <div><strong data-tr="btitle"></strong><p data-tr="btext"></p><button type="button" class="tg-banner-action" data-tr="baction"></button></div>
+              </div>
+
+              <div class="tg-metrics">
+                <div><span class="tg-n" data-tr="km">24.6</span><small>km</small></div>
+                <div><span class="tg-n">38:12</span><small>moving</small></div>
+                <div><span class="tg-n" data-tr="speed">21.4</span><small data-tr="speedlabel">km/h now</small></div>
+              </div>
+
+              <p class="tg-sync" data-tr="sync"><svg class="i"><use href="#i-check" /></svg><span>Saved on this phone and synced</span></p>
+
+              <div class="tg-actions">
+                <button type="button" class="m3-tonal"><svg class="i"><use href="#i-pause" /></svg>Pause</button>
+                <button type="button" class="m3-filled"><svg class="i"><use href="#i-flag" /></svg>Finish ride</button>
+              </div>
+              <span class="gesture-bar" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 ADAPT -->
+      <article id="adapt" class="case case-reverse" style="--brand:#6b1e1e; --stage:#e4dbd0">
+        <div class="case-copy">
+          <p class="mode-label"><span>06</span> Adapt mode</p>
+          <h2>One checkout, every platform, language, and window.</h2>
+          <p class="case-lede">Adapt mode translates idioms instead of transplanting them. Maison North’s delivery step moves between iOS and Android grammar, survives German’s long words and Arabic’s right-to-left reading, and becomes two panes on a tablet.</p>
+          <dl class="output">
+            <div><dt>Platform</dt><dd>iOS: inset grouped fields, back labelled with the previous screen, centred title. Android: outlined fields, top app bar, leading title, predictive back.</dd></div>
+            <div><dt>Language</dt><dd>Mirrored layout and direction-aware arrows in Arabic, Arabic-Indic digits from the locale, prices formatted per locale, never concatenated.</dd></div>
+            <div><dt>Window</dt><dd>Compact: one column, total pinned above the action. Expanded: form and order summary side by side.</dd></div>
+          </dl>
+          <details class="prompt">
+            <summary>The prompt</summary>
+            <p>Adapt Maison North’s delivery step for Android and for tablets, and localise it for German and Arabic.</p>
+          </details>
+        </div>
+
+        <div class="stage stage-maison">
+          <div class="stage-controls wrap">
+            <div class="segmented" role="group" aria-label="Platform">
+              <button type="button" aria-pressed="true" data-mn-platform="ios">iOS</button>
+              <button type="button" aria-pressed="false" data-mn-platform="android">Android</button>
+            </div>
+            <div class="segmented" role="group" aria-label="Language">
+              <button type="button" aria-pressed="true" data-mn-lang="en">EN</button>
+              <button type="button" aria-pressed="false" data-mn-lang="de">DE</button>
+              <button type="button" aria-pressed="false" data-mn-lang="ar" lang="ar">عربي</button>
+            </div>
+            <div class="segmented" role="group" aria-label="Window size">
+              <button type="button" aria-pressed="true" data-mn-size="phone">Phone</button>
+              <button type="button" aria-pressed="false" data-mn-size="tablet">Tablet</button>
+            </div>
+          </div>
+
+          <div class="mn-fit">
+            <div class="device ios" data-mn-device style="--vt:maison">
+              <div class="screen maison" data-mn lang="en" dir="ltr">
+                <div class="sb"><span class="sb-time">9:41</span><span class="punch" aria-hidden="true"></span><span class="sb-icons"><svg><use href="#s-signal" /></svg><svg><use href="#s-wifi" /></svg><svg class="sb-batt"><use href="#s-battery" /></svg></span></div>
+                <span class="island" aria-hidden="true"></span>
+
+                <div class="mn-bar">
+                  <button type="button" class="mn-back"><svg class="i dir"><use href="#i-chevron-left" /></svg><svg class="i dir m3"><use href="#i-arrow-left" /></svg><span data-t="back">Bag</span></button>
+                  <span class="mn-title" data-t="title">Delivery</span>
+                  <span class="mn-step" data-t="step">Step 2 of 3</span>
+                </div>
+
+                <div class="mn-panes">
+                  <div class="mn-main">
+                    <p class="mn-brand">Maison North</p>
+                    <ol class="mn-progress" aria-label="Checkout progress">
+                      <li class="done"><span data-t="p1">Bag</span></li><li class="now"><span data-t="p2">Delivery</span></li><li><span data-t="p3">Payment</span></li>
+                    </ol>
+                    <p class="mn-section" data-t="section">Delivery address</p>
+                    <div class="mn-fields">
+                      <label class="mn-field"><span data-t="name">Full name</span><input data-v="name" value="Maya Thompson" autocomplete="name" /></label>
+                      <label class="mn-field"><span data-t="address">Address</span><input data-v="address" value="17 Chapel Lane" autocomplete="street-address" /></label>
+                      <div class="mn-row">
+                        <label class="mn-field"><span data-t="city">City</span><input data-v="city" value="London" autocomplete="address-level2" /></label>
+                        <label class="mn-field"><span data-t="postcode">Postcode</span><input data-v="postcode" value="N1 8QZ" autocomplete="postal-code" /></label>
+                      </div>
+                    </div>
+                    <p class="mn-section" data-t="speed">Delivery speed</p>
+                    <div class="mn-options" role="radiogroup">
+                      <label class="mn-option"><input type="radio" name="mn-speed" checked /><span class="mn-radio"></span><span class="mn-opt-body"><b data-t="std">Standard</b><small data-t="stdTime">2–4 working days</small></span><span class="mn-opt-price" data-t="free">Free</span></label>
+                      <label class="mn-option"><input type="radio" name="mn-speed" /><span class="mn-radio"></span><span class="mn-opt-body"><b data-t="exp">Express</b><small data-t="expTime">Next working day</small></span><span class="mn-opt-price" data-price="express">£12.00</span></label>
+                    </div>
+                  </div>
+
+                  <aside class="mn-summary">
+                    <div class="mn-item">
+                      <div class="mn-thumb" aria-hidden="true"><svg viewBox="0 0 60 80"><path d="M22 6l8 6 8-6 12 6 6 22-8 3-3-10v45H15V27l-3 10-8-3 6-22z" /><path class="lapel" d="M22 6l8 22 8-22M30 28v44" /></svg></div>
+                      <div><b data-t="product">Wool wrap coat</b><small data-t="variant">Size M, oat</small></div>
+                      <span data-price="item">£320.00</span>
+                    </div>
+                    <div class="mn-total"><span data-t="total">Total</span><strong data-price="total">£320.00</strong></div>
+                    <button type="button" class="mn-cta mn-cta-side"><span data-t="cta">Continue to payment</span></button>
+                  </aside>
+                </div>
+
+                <div class="mn-footer">
+                  <div class="mn-total mn-total-compact"><span data-t="total">Total</span><strong data-price="total">£320.00</strong></div>
+                  <button type="button" class="mn-cta"><span data-t="cta">Continue to payment</span></button>
+                </div>
+                <span class="home-ind" aria-hidden="true"></span>
+                <span class="gesture-bar" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- METHOD -->
+      <section id="method" class="method" aria-labelledby="method-title">
+        <div class="section-head">
+          <h2 id="method-title">How the skill thinks before it draws.</h2>
+          <p>The process runs silently. What reaches you is one line of reading and inferences, then the design.</p>
+        </div>
+        <ol class="loop">
+          <li><span>1</span><strong>Context</strong><p>Reads your DESIGN.md, brief, existing screens, and anything that reveals brand or tokens.</p></li>
+          <li><span>2</span><strong>Design read</strong><p>Names the category, audience, direction, and platforms, plus the screen’s single job.</p></li>
+          <li><span>3</span><strong>Ask once, or infer</strong><p>At most three questions with likely answers, or the inferences stated in one line.</p></li>
+          <li><span>4</span><strong>Plan and mirror test</strong><p>Would a neighbouring product get this exact plan? Then it’s a default, and one decision changes.</p></li>
+          <li><span>5</span><strong>Produce</strong><p>Loads the craft floor and only the references the task needs.</p></li>
+          <li><span>6</span><strong>Verify</strong><p>Every state, large text, dark mode, the narrowest width. Says what it couldn’t check.</p></li>
+        </ol>
+
+        <div class="floor">
+          <div class="floor-head">
+            <h3>The floor. Never waived, whatever the brief.</h3>
+            <p>Each item is checked on the result, not intended.</p>
+          </div>
+          <ul>
+            <li>Targets of at least 44pt on iOS and 48dp on Android</li>
+            <li>WCAG AA contrast, in light and in dark</li>
+            <li>Text follows the system size and reflows, never clips</li>
+            <li>Nothing essential under the notch, bars, or keyboard</li>
+            <li>Every control has a name, role, and state</li>
+            <li>Every gesture has a visible alternative</li>
+            <li>Loading, empty, error, and populated, each with a way out</li>
+            <li>Irreversible actions are explicit and protected</li>
+            <li>Motion has a purpose and a Reduce Motion path</li>
+            <li>No invented metrics, reviews, or dark patterns</li>
+          </ul>
+        </div>
+
+        <div class="stack-note">
+          <h3>Version 1.0 works with any stack.</h3>
+          <p>The skill no longer ships framework code. Designs are specified in pt and dp, colour roles, type roles, states, and behaviours. When you’re implementing, your agent reads your project and translates the decisions into its own vocabulary.</p>
+          <ul class="stack-chips" aria-label="Examples of stacks"><li>SwiftUI</li><li>UIKit</li><li>Jetpack Compose</li><li>React Native</li><li>Flutter</li><li>Mobile web</li></ul>
+        </div>
+      </section>
+
+      <section class="closing">
+        <h2>Give your agent a designer’s judgment.</h2>
+        <div class="install install-dark">
+          <code id="install-cmd-2">npx skills add RubenGlez/mobile-design</code>
+          <button class="copy-button" type="button" data-copy="#install-cmd-2"><svg class="i" aria-hidden="true"><use href="#i-copy" /></svg><span>Copy</span></button>
+        </div>
+        <p class="closing-try">Then try: <q>This home screen looks generic. Make it feel like our product.</q></p>
+        <div class="closing-links">
+          <a class="button button-light" href="https://www.skills.sh/rubenglez/mobile-design" target="_blank" rel="noreferrer">Install via skills.sh</a>
+          <a class="text-link light" href="https://github.com/RubenGlez/mobile-design" target="_blank" rel="noreferrer">Repository <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right" /></svg></a>
+        </div>
+      </section>
     </main>
-    <footer><span>Created by <a href="https://rubenglez.dev" target="_blank" rel="noreferrer">rubenglez ↗</a> · Fictional concepts, built to demonstrate the skill.</span><a href="https://github.com/RubenGlez/mobile-design-showcase" target="_blank" rel="noreferrer">Showcase source ↗</a></footer>
+
+    <footer class="site-footer">
+      <span>Made by <a href="https://rubenglez.dev" target="_blank" rel="noreferrer">rubenglez</a>. Kiln, Solace, Relay, Levain, Trailguard, and Maison North are fictional products.</span>
+      <span><a href="https://github.com/RubenGlez/mobile-design-showcase" target="_blank" rel="noreferrer">Showcase source</a> <a href="https://github.com/RubenGlez/mobile-design-showcase/issues/new/choose" target="_blank" rel="noreferrer">Suggest a case</a></span>
+    </footer>
     <script src="app.js"></script>
   </body>
 </html>

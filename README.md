@@ -1,13 +1,15 @@
 # mobile-design showcase
 
-Interactive fictional product cases that demonstrate what [`mobile-design`](https://github.com/RubenGlez/mobile-design) produces when mobile UI is treated as a product, accessibility, and runtime problem, not a static mockup exercise.
+Interactive fictional product cases that show what [`mobile-design`](https://github.com/RubenGlez/mobile-design) 1.0 does in each of its six modes. The skill works with any stack; the cases show design decisions, not framework code.
 
 ## Cases
 
-- **Solace**: a transfer confirmation that protects confidence in an irreversible flow.
-- **Trailguard**: a cycling safety flow with location, offline, and background-execution constraints.
-- **Maison North**: a localized checkout that supports RTL and wider layouts.
-- **Support queue audit**: a before/after design review with concrete issues and fixes.
+- **Shape, Kiln**: a one-line request for a ceramics studio app becomes a confirmed brief, with three questions and an assumed answer for each.
+- **Design, Solace**: a bank transfer built around a settlement line that never calls pending a success, in light and dark.
+- **Critique, Relay**: a generic-looking support queue reviewed with first impression, specificity, P0–P3 findings with rule IDs, and the rebuilt screen.
+- **Refine, Levain**: one bake screen in its original, quieter, bolder, and distilled versions.
+- **Harden, Trailguard**: an Android ride log through no signal, location off, low battery, and the app being closed mid-ride.
+- **Adapt, Maison North**: a checkout across iOS and Android, English, German, and Arabic (RTL), phone and tablet.
 
 The showcase is deliberately separate from the installed skill so executable demos, videos, and visual assets do not add weight to users' skill installations.
 

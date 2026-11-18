@@ -10,12 +10,14 @@ Repository: https://github.com/RubenGlez/mobile-design
 
 ## GitHub release or repository post
 
-`mobile-design` now has an interactive showcase: four fictional mobile products that demonstrate what happens when an agent designs for states, platform constraints, and recovery, not only the default screen.
+`mobile-design` 1.0 is out, and the showcase has been rebuilt around it: six interactive fictional products, one per mode.
 
-- Fintech transfer confirmation
-- Offline cycling safety log
-- RTL and adaptive commerce checkout
-- Design audit before/after
+- Shape: Kiln, a sparse request turned into a brief
+- Design: Solace, a transfer that never calls pending a success
+- Critique: Relay, a support queue reviewed with ranked findings
+- Refine: Levain, the same screen quieter, bolder, and distilled
+- Harden: Trailguard, a ride log through every failure state
+- Adapt: Maison North, a checkout across platforms, languages, and window sizes
 
 Try the cases: https://rubenglez.github.io/mobile-design-showcase/
 
@@ -27,9 +29,9 @@ npx skills add RubenGlez/mobile-design
 
 ## X
 
-Most AI mobile UI demos stop at the happy path.
+Most AI-generated mobile UI could belong to any app.
 
-I made four interactive cases with `mobile-design` to show the parts that matter in a real app: transfer risk, offline location, RTL checkout, and design-review fixes.
+mobile-design 1.0 is an agent skill that designs like a senior mobile product designer, in any stack. I built six interactive cases, one per mode: shape, design, critique, refine, harden, adapt.
 
 Try them: https://rubenglez.github.io/mobile-design-showcase/
 
@@ -37,24 +39,30 @@ Install: `npx skills add RubenGlez/mobile-design`
 
 ## LinkedIn
 
-I published an interactive showcase for `mobile-design`, an agent skill for React Native, Expo, iOS, and Android UI work.
+I released version 1.0 of mobile-design, an open-source agent skill that gives coding agents the judgment of a senior mobile product designer for iOS and Android.
 
-The goal was to make the skill's point of view visible: mobile product design is not only visual polish. It includes permission fallbacks, recovery after errors, touch and screen-reader access, responsive windows, localization, and clear platform decisions.
+1.0 drops framework code entirely. The skill delivers design decisions (structure, tokens, states, copy, motion) in platform-neutral terms, and the agent translates them into whatever stack the project uses: SwiftUI, Compose, React Native, Flutter, or the web.
 
-The four cases cover a transfer confirmation, offline ride tracking, RTL checkout, and an actionable UI audit.
+The new showcase has one fictional product per mode. My favourite is the Refine case: the same bake screen in quieter, bolder, and distilled versions, each keeping the product's identity.
 
 Explore the showcase: https://rubenglez.github.io/mobile-design-showcase/
 
-## React Native / Expo community post
+## Mobile developer community post
 
-I built a small interactive showcase for an open-source mobile-design agent skill. The cases focus on common RN/Expo UI failure modes: treating pending payments as success, hiding offline state, bolting on RTL too late, and calling a visual cleanup a design review.
+I rebuilt the showcase for mobile-design, an open-source design skill for coding agents, for its 1.0 release. The cases focus on the parts generated UI usually skips: pending versus sent in a payment, an honest route log when GPS drops, RTL and long German strings in checkout, and a critique that ranks findings instead of listing opinions.
 
-Each case includes the exact prompt and an interactive state change:
+Each case is interactive and includes the prompt that produced it:
 
 https://rubenglez.github.io/mobile-design-showcase/
 
-I'd especially value feedback on which mobile flow would make the most useful fifth case.
+Feedback welcome, especially on which flow would make the best seventh case.
 
 ## Screenshot guidance
 
-Use the first visible state for Fintech, Trailguard, and Checkout. For the audit, show both the `Before` and `After` tabs in a short recording. Do not crop out the explanatory copy, it explains why the UI differs from a generic generated mockup.
+- Solace: record the full flow from Review to Arrived, once in light and once in dark.
+- Relay: show Findings with one finding selected, then Rebuilt.
+- Levain: a short clip cycling Original, Quieter, Bolder, Distill works best.
+- Trailguard: the Location off and App closed states show the signature most clearly.
+- Maison North: Android, Arabic, Tablet together is the strongest single frame.
+
+Keep the explanatory copy in frame when you can; it explains why the UI differs from a generic generated mockup.
